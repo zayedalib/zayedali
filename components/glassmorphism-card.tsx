@@ -7,7 +7,7 @@ import { useMobile } from "@/hooks/use-mobile"
 import TypingAnimation from "./typing-animation"
 
 export default function GlassmorphismCard() {
-  const [activeTab, setActiveTab] = useState("about")
+  const [activeTab, setActiveTab] = useState("projects")
   const isMobile = useMobile()
 
   return (
@@ -24,14 +24,33 @@ export default function GlassmorphismCard() {
             </p>
           </div>
 
-          <div className="w-full space-y-4 mt-4">
+          {/* Client Testimonial - Moved to left section for prominence */}
+          <div className="w-full mb-6 p-4 rounded-lg bg-gradient-to-br from-cyan-900/20 to-purple-900/20 border border-cyan-500/20">
+            <div className="flex items-start">
+              <Quote className="text-cyan-400/60 w-6 h-6 mr-2 flex-shrink-0 mt-1" />
+              <div className="flex-1">
+                <p className="text-gray-200 italic text-sm">
+                  "I love it. Everything about it is amazing and you were the perfect person to do this. Thank you for
+                  reaching out. Extremely professional and quickly done."
+                </p>
+                <div className="mt-2 flex items-center justify-between">
+                  <p className="text-cyan-300 font-medium text-xs">— Ethan at MYSC</p>
+                  <Image src="/nuko-thumbs-up.gif" alt="Character approval" width={24} height={24} className="ml-2" />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="w-full space-y-4">
             <div className="flex items-center space-x-3">
               <div className="w-10 h-10 rounded-full bg-gradient-to-r from-pink-500 to-purple-500 flex items-center justify-center">
                 <Mail size={20} className="text-white" />
               </div>
               <div>
                 <p className="text-sm text-gray-400">Email</p>
-                <p className="text-white">dev@zayedali.com</p>
+                <a href="mailto:info@zayedali.com" className="text-white hover:text-pink-300 transition-colors">
+                  info@zayedali.com
+                </a>
               </div>
             </div>
 
@@ -41,7 +60,14 @@ export default function GlassmorphismCard() {
               </div>
               <div>
                 <p className="text-sm text-gray-400">Instagram</p>
-                <p className="text-white">@zayedalib</p>
+                <a
+                  href="https://www.instagram.com/zayedalib/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-white hover:text-purple-300 transition-colors"
+                >
+                  @zayedalib
+                </a>
               </div>
             </div>
 
@@ -75,7 +101,7 @@ export default function GlassmorphismCard() {
                   alt="Wakagotchi mascot"
                   width={96}
                   height={96}
-                  className="object-cover scale-100"
+                  className="object-cover scale-125"
                 />
               </div>
 
@@ -109,16 +135,10 @@ export default function GlassmorphismCard() {
 
           <div className="flex mb-6 border-b border-white/10">
             <button
-              onClick={() => setActiveTab("about")}
-              className={`px-3 md:px-4 py-2 text-sm font-medium ${activeTab === "about" ? "text-white border-b-2 border-white" : "text-gray-400"}`}
-            >
-              About Me
-            </button>
-            <button
               onClick={() => setActiveTab("projects")}
               className={`px-3 md:px-4 py-2 text-sm font-medium ${activeTab === "projects" ? "text-white border-b-2 border-white" : "text-gray-400"}`}
             >
-              Projects
+              Portfolio
             </button>
             <button
               onClick={() => setActiveTab("contact")}
@@ -129,102 +149,48 @@ export default function GlassmorphismCard() {
           </div>
 
           <div className="max-h-[300px] md:max-h-[400px] overflow-y-auto pr-2">
-            {activeTab === "about" && (
-              <div className="text-gray-300 space-y-4">
-                {/* Testimonial */}
-                <div className="mb-6 p-4 rounded-lg bg-gradient-to-br from-cyan-900/20 to-purple-900/20 border border-cyan-500/20">
-                  <div className="flex items-start">
-                    <Quote className="text-cyan-400/60 w-8 h-8 mr-2 flex-shrink-0 mt-1" />
-                    <div className="flex-1">
-                      <p className="text-gray-200 italic">
-                        "I love it. Everything about it is amazing and you were the perfect person to do this. Thank you
-                        for reaching out. Extremely professional and quickly done."
-                      </p>
-                      <div className="mt-2 flex items-center justify-between">
-                        <div className="flex items-center">
-                          <div className="h-px flex-1 bg-gradient-to-r from-cyan-500/20 to-transparent"></div>
-                          <p className="text-cyan-300 font-medium text-sm mx-2">Ethan at MYSC</p>
-                          <div className="h-px flex-1 bg-gradient-to-l from-cyan-500/20 to-transparent"></div>
-                        </div>
-                        <Image
-                          src="/nuko-thumbs-up.gif"
-                          alt="Character approval"
-                          width={32}
-                          height={32}
-                          className="ml-2"
-                        />
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <h2 className="text-xl font-semibold text-white">About Me</h2>
-                <p>
-                  Currently a Biology student, I like to run ultramarathons, I specialize in creating modern web applications. Originally as a hobby, but I find it quite satisfying when a project comes together.
-                </p>
-                <p>
-                  With expertise in both frontend and backend development, I build complete solutions that deliver
-                  exceptional user experiences.
-                </p>
-                <p>
-                  I'm constantly exploring new technologies, my main skills lie in web dev, but currently now trying to branch into Swift, embedded systems with C++, and Godot game dev!
-                </p>
-              </div>
-            )}
-
             {activeTab === "projects" && (
               <div className="space-y-6">
-                <div className="bg-white/5 p-4 rounded-lg border border-white/5 hover:border-white/10 transition-colors">
-                  <div className="flex flex-col md:flex-row gap-4">
-                    <div className="w-full md:w-1/3 aspect-video rounded-md overflow-hidden">
-                      <Image
-                        src="/wakagotchi-screenshot.jpeg"
-                        alt="Wakagotchi website screenshot"
-                        width={320}
-                        height={180}
-                        className="w-full h-full object-cover"
-                      />
-                    </div>
-                    <div className="w-full md:w-2/3">
-                      <h3 className="text-lg font-medium text-white">Wakagotchi.com</h3>
-                      <p className="text-gray-300 mt-1">
-                        A personal project featuring interactive virtual pets that respond to user activity. Built with
-                        React, TypeScript, and Canvas animations.
-                      </p>
-                      <div className="mt-2">
-                        <a
-                          href="https://wakagotchi.com"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-sm text-blue-400 hover:underline"
-                        >
-                          Visit Site →
-                        </a>
-                      </div>
-                    </div>
-                  </div>
+                <div className="text-center mb-6">
+                  <h2 className="text-2xl font-bold text-white mb-2">My Work</h2>
+                  <p className="text-gray-300">Professional websites and applications I've built for clients</p>
                 </div>
 
+                {/* Crescent Elevators */}
                 <div className="bg-white/5 p-4 rounded-lg border border-white/5 hover:border-white/10 transition-colors">
                   <div className="flex flex-col md:flex-row gap-4">
-                    <div className="w-full md:w-1/3 aspect-video rounded-md overflow-hidden">
+                    <a
+                      href="https://crescentelevator.ca"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-full md:w-1/3 aspect-video rounded-md overflow-hidden hover:opacity-80 transition-opacity"
+                    >
                       <Image
-                        src="/mysc-screenshot.jpeg"
-                        alt="MYSC website screenshot"
+                        src="/crescentelevator-screenshot.jpeg"
+                        alt="Crescent Elevators website screenshot"
                         width={320}
                         height={180}
                         className="w-full h-full object-cover"
                       />
-                    </div>
+                    </a>
                     <div className="w-full md:w-2/3">
-                      <h3 className="text-lg font-medium text-white">MYSC.ca</h3>
+                      <h3 className="text-lg font-medium text-white">Crescent Elevators Co.</h3>
                       <p className="text-gray-300 mt-1">
-                        Modern application platform for talent show. Built with Next.js and Tailwind CSS, featuring
-                        responsive design and dynamic content management.
+                        Professional elevator services website featuring modern design, service listings, and contact
+                        forms. Built with responsive design principles.
                       </p>
-                      <div className="mt-2">
+                      <div className="mt-2 flex flex-wrap gap-2">
+                        <span className="px-2 py-1 bg-gray-900/30 text-gray-300 text-xs rounded-full">Next.js</span>
+                        <span className="px-2 py-1 bg-gray-900/30 text-gray-300 text-xs rounded-full">
+                          Tailwind CSS
+                        </span>
+                        <span className="px-2 py-1 bg-gray-900/30 text-gray-300 text-xs rounded-full">
+                          Professional Services
+                        </span>
+                      </div>
+                      <div className="mt-3">
                         <a
-                          href="http://mysc.ca"
+                          href="https://crescentelevator.ca"
                           target="_blank"
                           rel="noopener noreferrer"
                           className="text-sm text-blue-400 hover:underline flex items-center gap-1"
@@ -232,34 +198,145 @@ export default function GlassmorphismCard() {
                           Visit Site <ExternalLink size={14} />
                         </a>
                       </div>
+                    </div>
+                  </div>
+                </div>
 
-                      {/* Testimonial in projects section */}
-                      <div className="mt-3 p-3 rounded-md bg-amber-900/20 border border-amber-500/20">
-                        <div className="flex items-start">
-                          <p className="text-gray-300 text-sm italic flex-1">
-                            "Extremely professional and quickly done. Everything about it is amazing."
-                          </p>
-                          <Image
-                            src="/nuko-thumbs-up.gif"
-                            alt="Character approval"
-                            width={24}
-                            height={24}
-                            className="ml-2 flex-shrink-0"
-                          />
-                        </div>
-                        <p className="text-amber-400 text-xs mt-1">— Ethan, Project Manager</p>
+                {/* MYSC */}
+                <div className="bg-white/5 p-4 rounded-lg border border-white/5 hover:border-white/10 transition-colors">
+                  <div className="flex flex-col md:flex-row gap-4">
+                    <a
+                      href="https://mysc.ca"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-full md:w-1/3 aspect-video rounded-md overflow-hidden hover:opacity-80 transition-opacity"
+                    >
+                      <Image
+                        src="/mysc-screenshot.jpeg"
+                        alt="MYSC website screenshot"
+                        width={320}
+                        height={180}
+                        className="w-full h-full object-cover"
+                      />
+                    </a>
+                    <div className="w-full md:w-2/3">
+                      <h3 className="text-lg font-medium text-white">MYSC - Markham Youth Spotlight</h3>
+                      <p className="text-gray-300 mt-1">
+                        Modern talent show platform featuring participant registration, episode listings, and
+                        competition management. Built with premium design and user experience.
+                      </p>
+                      <div className="mt-2 flex flex-wrap gap-2">
+                        <span className="px-2 py-1 bg-amber-900/30 text-amber-300 text-xs rounded-full">Next.js</span>
+                        <span className="px-2 py-1 bg-amber-900/30 text-amber-300 text-xs rounded-full">
+                          Tailwind CSS
+                        </span>
+                        <span className="px-2 py-1 bg-amber-900/30 text-amber-300 text-xs rounded-full">
+                          Competition Platform
+                        </span>
+                      </div>
+                      <div className="mt-3">
+                        <a
+                          href="https://mysc.ca"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-sm text-blue-400 hover:underline flex items-center gap-1"
+                        >
+                          Visit Site <ExternalLink size={14} />
+                        </a>
                       </div>
                     </div>
                   </div>
                 </div>
 
+                {/* LoteTree Yard Care */}
                 <div className="bg-white/5 p-4 rounded-lg border border-white/5 hover:border-white/10 transition-colors">
-                  <h3 className="text-lg font-medium text-white">Cosmic Portfolio</h3>
-                  <p className="text-gray-300 mt-1">
-                    This very website! Using React.js, Tailwind CSS, and Three.js
-                  </p>
-                  <div className="mt-2">
-                    <span className="text-sm text-green-400">Current Project</span>
+                  <div className="flex flex-col md:flex-row gap-4">
+                    <a
+                      href="https://lotetreeyard.ca"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-full md:w-1/3 aspect-video rounded-md overflow-hidden hover:opacity-80 transition-opacity"
+                    >
+                      <Image
+                        src="/lotetreeyard-screenshot.jpeg"
+                        alt="LoteTree Yard Care website screenshot"
+                        width={320}
+                        height={180}
+                        className="w-full h-full object-cover"
+                      />
+                    </a>
+                    <div className="w-full md:w-2/3">
+                      <h3 className="text-lg font-medium text-white">LoteTree Yard Care</h3>
+                      <p className="text-gray-300 mt-1">
+                        Professional landscaping and yard care website with service showcases, quote requests, and
+                        portfolio galleries. Features beautiful outdoor imagery and green design theme.
+                      </p>
+                      <div className="mt-2 flex flex-wrap gap-2">
+                        <span className="px-2 py-1 bg-green-900/30 text-green-300 text-xs rounded-full">Next.js</span>
+                        <span className="px-2 py-1 bg-green-900/30 text-green-300 text-xs rounded-full">
+                          Tailwind CSS
+                        </span>
+                        <span className="px-2 py-1 bg-green-900/30 text-green-300 text-xs rounded-full">
+                          Landscaping
+                        </span>
+                      </div>
+                      <div className="mt-3">
+                        <a
+                          href="https://lotetreeyard.ca"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-sm text-blue-400 hover:underline flex items-center gap-1"
+                        >
+                          Visit Site <ExternalLink size={14} />
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* SFL Youth */}
+                <div className="bg-white/5 p-4 rounded-lg border border-white/5 hover:border-white/10 transition-colors">
+                  <div className="flex flex-col md:flex-row gap-4">
+                    <a
+                      href="https://sfl-youth.org"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-full md:w-1/3 aspect-video rounded-md overflow-hidden hover:opacity-80 transition-opacity"
+                    >
+                      <Image
+                        src="/sfl-youth-screenshot.jpeg"
+                        alt="SFL Youth website screenshot"
+                        width={320}
+                        height={180}
+                        className="w-full h-full object-cover"
+                      />
+                    </a>
+                    <div className="w-full md:w-2/3">
+                      <h3 className="text-lg font-medium text-white">Shaping Future Leaders</h3>
+                      <p className="text-gray-300 mt-1">
+                        Youth leadership development organization website featuring program showcases, testimonials, and
+                        community impact statistics. Built with modern design and engaging user experience.
+                      </p>
+                      <div className="mt-2 flex flex-wrap gap-2">
+                        <span className="px-2 py-1 bg-green-900/30 text-green-300 text-xs rounded-full">Next.js</span>
+                        <span className="px-2 py-1 bg-green-900/30 text-green-300 text-xs rounded-full">
+                          Tailwind CSS
+                        </span>
+                        <span className="px-2 py-1 bg-green-900/30 text-green-300 text-xs rounded-full">
+                          Youth Leadership
+                        </span>
+                      </div>
+                      <div className="mt-3">
+                        <a
+                          href="https://sfl-youth.org"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-sm text-blue-400 hover:underline flex items-center gap-1"
+                        >
+                          Visit Site <ExternalLink size={14} />
+                        </a>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -267,85 +344,39 @@ export default function GlassmorphismCard() {
 
             {activeTab === "contact" && (
               <div className="space-y-6">
-                <h2 className="text-xl font-semibold text-white">Get In Touch</h2>
-                <p className="text-gray-300">
-                  I'm always open to discussing new projects, creative ideas, or opportunities to be part of your
-                  vision.
-                </p>
-
-                <div className="bg-white/5 p-4 rounded-lg border border-white/5">
-                  <form className="space-y-4">
-                    <div>
-                      <label htmlFor="name" className="block text-sm font-medium text-gray-300 mb-1">
-                        Name
-                      </label>
-                      <input type="text" id="name" className="nintendo-input w-full" placeholder="Your name" />
-                    </div>
-                    <div>
-                      <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-1">
-                        Email
-                      </label>
-                      <input
-                        type="email"
-                        id="email"
-                        className="nintendo-input w-full"
-                        placeholder="example@mail.com"
-                      />
-                    </div>
-                    <div>
-                      <label htmlFor="message" className="block text-sm font-medium text-gray-300 mb-1">
-                        Message
-                      </label>
-                      <textarea
-                        id="message"
-                        rows={3}
-                        className="nintendo-input w-full"
-                        placeholder="How can I help you?"
-                      ></textarea>
-                    </div>
-                    <button
-                      type="button"
-                      className="nintendo-btn w-full py-2 px-4 bg-gradient-to-r from-purple-500 to-cyan-500 hover:from-purple-600 hover:to-cyan-600 text-white font-medium rounded-md transition-colors"
+                <div className="text-center">
+                  <h2 className="text-xl font-semibold text-white mb-4">Get In Touch</h2>
+                  <div className="flex justify-center mb-4">
+                    <Image
+                      src="/nuko-car.gif"
+                      alt="Character in car animation"
+                      width={80}
+                      height={80}
+                      className="rounded-lg"
+                    />
+                  </div>
+                  <p className="text-gray-300 text-lg">
+                    Get in touch by sending me an{" "}
+                    <a
+                      href="mailto:info@zayedali.com"
+                      className="text-pink-400 hover:text-pink-300 underline transition-colors"
                     >
-                      Send Message
-                    </button>
-                  </form>
+                      email
+                    </a>
+                    , or, DM me on{" "}
+                    <a
+                      href="https://www.instagram.com/zayedalib/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-purple-400 hover:text-purple-300 underline transition-colors"
+                    >
+                      Instagram
+                    </a>
+                    !
+                  </p>
                 </div>
               </div>
             )}
-          </div>
-
-          <div className="flex flex-wrap gap-2 mt-6">
-            <a
-              href="#"
-              className="nintendo-btn px-3 py-1 md:px-4 md:py-2 bg-white/10 rounded-full text-xs md:text-sm text-white hover:bg-white/20 transition-colors"
-            >
-              React
-            </a>
-            <a
-              href="#"
-              className="nintendo-btn px-3 py-1 md:px-4 md:py-2 bg-white/10 rounded-full text-xs md:text-sm text-white hover:bg-white/20 transition-colors"
-            >
-              Next.js
-            </a>
-            <a
-              href="#"
-              className="nintendo-btn px-3 py-1 md:px-4 md:py-2 bg-white/10 rounded-full text-xs md:text-sm text-white hover:bg-white/20 transition-colors"
-            >
-              Three.js
-            </a>
-            <a
-              href="#"
-              className="nintendo-btn px-3 py-1 md:px-4 md:py-2 bg-white/10 rounded-full text-xs md:text-sm text-white hover:bg-white/20 transition-colors"
-            >
-              Tailwind
-            </a>
-            <a
-              href="#"
-              className="nintendo-btn px-3 py-1 md:px-4 md:py-2 bg-white/10 rounded-full text-xs md:text-sm text-white hover:bg-white/20 transition-colors"
-            >
-              TypeScript
-            </a>
           </div>
         </div>
       </div>
